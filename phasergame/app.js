@@ -44,7 +44,7 @@ function create(){
 	enemy1.animations.add('left', [0,1], 10, true);
 	enemy1.animations.add('right', [2,3], 10, true);
 	// applying physics to enemy1
-	game.phsyics.arcade.enable(enemy1);
+	game.physics.arcade.enable(enemy1);
 	enemy1.body.bounce.y = 0.2;
 	enemy1.body.gravity.y = 500;
 	enemy1.body.collideWorldBounds = true;
@@ -54,7 +54,7 @@ function create(){
 	enemy2.animations.add('left', [0,1], 10, true);
 	enemy2.animations.add('right', [2,3], 10, true);
 	// applying physics to enemy2
-	game.phsyics.arcade.enable(enemy2);
+	game.physics.arcade.enable(enemy2);
 	enemy2.body.bounce.y = 0.2;
 	enemy2.body.gravity.y = 500;
 	enemy2.body.collideWorldBounds = true;
@@ -64,7 +64,7 @@ function create(){
 	enemy3.animations.add('left', [0,1], 10, true);
 	enemy3.animations.add('right', [2,3], 10, true);
 	// applying physics to enemy3
-	game.phsyics.arcade.enable(enemy3);
+	game.physics.arcade.enable(enemy3);
 	enemy3.body.bounce.y = 0.2;
 	enemy3.body.gravity.y = 500;
 	enemy3.body.collideWorldBounds = true;
