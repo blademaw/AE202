@@ -1,6 +1,6 @@
 console.log("working");
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {preload:preload}, {create:create}, {update:update});
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {preload:preload, create:create, update:update});
 var score = 0;
 var life = 3;
 
