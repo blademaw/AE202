@@ -131,6 +131,8 @@ function update(){
 	} else if (enemy1.x < 405){
 		enemy1.animations.play('right');
 		enemy1.body.velocity.x = 120;
+	}else {
+		enemy1.animations.stop()
 	}
 
 	if(enemy2.x > 200){
@@ -139,6 +141,8 @@ function update(){
 	} else if (enemy2.x < 21){
 		enemy2.animations.play('right');
 		enemy2.body.velocity.x = 80;
+	}else {
+		enemy1.animations.stop()
 	}
 
 	if(enemy3.x > 759){
@@ -147,6 +151,8 @@ function update(){
 	} else if (enemy3.x < 201){
 		enemy3.animations.play('right');
 		enemy3.body.velocity.x = 150;
+	}else {
+		enemy1.animations.stop()
 	}
 
 	game.physics.arcade.collide(stars, platforms);
