@@ -1,4 +1,4 @@
-console.log("working");
+console.log("new version");
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {preload:preload, create:create, update:update});
 var score = 0;
@@ -26,8 +26,9 @@ function create(){
 	ground.body.immovable = true;
 
 	var ledge = platforms.create(400,400, 'ground');
-	ledge = platforms.create(-150,250, 'ground');
-	ledge.body.immovable = true;
+  	ledge.body.immovable = true;
+  	ledge = platforms.create(-150, 250, 'ground');
+  	ledge.body.immovable = true;
 	// adding player
 	player = game.add.sprite(32, game.world.height-220, 'dude');
 	// creating animations for player
@@ -36,7 +37,7 @@ function create(){
 	// applying physics to player
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0.2;
-	player.body.gravity.y = 320;
+	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
 	// creating enemies
 	enemy1 = game.add.sprite(760, 20, 'baddie');
@@ -59,7 +60,7 @@ function create(){
 	enemy2.body.gravity.y = 500;
 	enemy2.body.collideWorldBounds = true;
 
-	enemy3 = game.add.sprite(10, 20, 'baddie');
+	enemy3 = game.add.sprite(200, 20, 'baddie');
 	// creating animations for enemy3
 	enemy3.animations.add('left', [0,1], 10, true);
 	enemy3.animations.add('right', [2,3], 10, true);
@@ -83,7 +84,7 @@ function create(){
 	}
 
 	// setting style for text
-	var style = {font: "bold 32px Arial", fill: "#fff", boundAlignH: "center", boundsAlignV: "middle"};
+	var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
     scorelabel = game.add.text(-60, 0, "Your score is: ", style);
     scoretext = game.add.text(70, 0, score, style);
     scorelabel.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
@@ -130,34 +131,26 @@ function update(){
 	}
 
 	// Enemy AI
-	if(enemy1.x > 759){
+	if (enemy1.x > 759){
 		enemy1.animations.play('left');
 		enemy1.body.velocity.x = -120;
-	} else if (enemy1.x < 405){
+	} else if (enemy1.x < 405) {
 		enemy1.animations.play('right');
 		enemy1.body.velocity.x = 120;
-	}else {
-		enemy1.animations.stop()
 	}
-
-	if(enemy2.x > 200){
+	if (enemy2.x > 200){
 		enemy2.animations.play('left');
 		enemy2.body.velocity.x = -80;
-	} else if (enemy2.x < 21){
+	} else if (enemy2.x < 21) {
 		enemy2.animations.play('right');
 		enemy2.body.velocity.x = 80;
-	}else {
-		enemy1.animations.stop()
 	}
-
-	if(enemy3.x > 759){
+	if (enemy3.x > 759){
 		enemy3.animations.play('left');
 		enemy3.body.velocity.x = -150;
-	} else if (enemy3.x < 201){
+	} else if (enemy3.x < 201) {
 		enemy3.animations.play('right');
 		enemy3.body.velocity.x = 150;
-	}else {
-		enemy1.animations.stop()
 	}
 
 	game.physics.arcade.collide(stars, platforms);
@@ -194,7 +187,7 @@ function loseLifeLeft(player, enemy) {
 	enemy.kill();
 	life --;
 	lifetext.setText(life);
-	enemy.reset(760, 20);
+	enemy.reset(10, 20);
 }
 
 
