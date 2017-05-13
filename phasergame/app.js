@@ -26,8 +26,8 @@ function create(){
 	ground.body.immovable = true;
 
 	var ledge = platforms.create(400,400, 'ground');
-	ledge.body.immovable = true;
 	ledge = platforms.create(-150,250, 'ground');
+	ledge.body.immovable = true;
 	// adding player
 	player = game.add.sprite(32, game.world.height-220, 'dude');
 	// creating animations for player
@@ -37,7 +37,7 @@ function create(){
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0.2;
 	player.body.gravity.y = 320;
-	player.body.collideWorldGrounds = true;
+	player.body.collideWorldBounds = true;
 	// creating enemies
 	enemy1 = game.add.sprite(760, 20, 'baddie');
 	// creating animations for enemy1
@@ -84,16 +84,21 @@ function create(){
 
 	// setting style for text
 	var style = {font: "bold 32px Arial", fill: "#fff", boundAlignH: "center", boundsAlignV: "middle"};
-	scorelabel = game.add.text(-60, 0, "Your score is: ", style);
-	scroretext = game.add.text(70,0,score,style);
-	scorelabel.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
-	scorelabel.setText(3, 3, 'rgba(0,0,0,0.5)', 2);
-	lifelabel = game.add.text(-300, 0, "Lives: ", style);
-	lifetext = game.add.text(-240, 0, life, style);
-	lifelabel.setShadow(3,3, 'rgba(0,0,0,0,0.5)', 2);
-	lifetext.setShadow(3,3, 'rgba(0,0,0,0,0.5)', 2);
-	lifelabel.setTextBounds(0,0,800,100);
-	lifetext.setTextBounds(0,0,800,100);
+    scorelabel = game.add.text(-60, 0, "Your score is: ", style);
+    scoretext = game.add.text(70, 0, score, style);
+    scorelabel.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    scoretext.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    //  We'll set the bounds to be from x0, y520 (top down) and be 800px wide by 100px high
+    scorelabel.setTextBounds(0, 520, 800, 100);
+    scoretext.setTextBounds(0, 520, 800, 100);
+    //  Doing the same for lives count
+    lifelabel = game.add.text(-300, 0, "Lives: ", style);
+    lifetext = game.add.text(-240, 0, life, style);
+    lifelabel.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    lifetext.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    //  We'll set the bounds to be from x0, y520 (top down) and be 800px wide by 100px high
+    lifelabel.setTextBounds(0, 0, 800, 100);
+    lifetext.setTextBounds(0, 0, 800, 100);
 
 
 
@@ -163,7 +168,7 @@ function update(){
 	// LoseLife when player collide w/ enemies
 	game.physics.arcade.overlap(player, enemy1, loseLife, null, this);
 	game.physics.arcade.overlap(player, enemy2, loseLifeLeft, null, this);
-	game.physics.arcade.overlap(player, enemy1, loseLife, null, this);
+	game.physics.arcade.overlap(player, enemy3, loseLife, null, this);
 }
 
 // kill star, update score & text, respawn star
